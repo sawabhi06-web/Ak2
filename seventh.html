@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Madam Ji 💖</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ffd6e8, #ffe6f0);
+    font-family: 'Georgia', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    color: #d63384;
+    opacity: 0;
+    animation: fadePage 1.2s ease forwards;
+  }
+
+  @keyframes fadePage { from { opacity: 0; } to { opacity: 1; } }
+
+  .slideshow {
+    text-align: center;
+    max-width: 90%;
+    width: 700px;
+    font-size: 1.6rem;
+    font-style: italic;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 20px rgba(214, 51, 132, 0.4);
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+
+  .quote {
+    display: none;
+    animation: fadeEffect 3s;
+  }
+
+  @keyframes fadeEffect { from {opacity: 0;} to {opacity: 1;} }
+
+  /* GIF container */
+  .gif-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .gif-row img {
+    width: 30%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(214, 51, 132, 0.4);
+    opacity: 0;
+    transition: transform 0.3s, opacity 1s;
+  }
+
+  .gif-row img.show { opacity: 1; }
+
+  .gif-row img:hover { transform: scale(1.05); }
+
+  /* Floating hearts */
+  .heart {
+    position: absolute;
+    bottom: -20px;
+    color: pink;
+    font-size: 20px;
+    animation: floatUp 8s linear infinite;
+  }
+
+  @keyframes floatUp { 0% {transform: translateY(0) scale(1);} 100% {transform: translateY(-110vh) scale(1.5);} }
+
+  /* Back button */
+  .back-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 25px;
+    background: #ff4da6;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff4da6, 0 0 30px #ff99cc;
+    transition: 0.3s ease;
+    z-index: 50;
+  }
+
+  .back-btn:hover {
+    background: #e60073;
+    box-shadow: 0 0 20px #ff1a8c, 0 0 40px #ff66b2;
+  }
+
+  /* Responsive text & gif */
+  @media (max-width: 1024px) {
+    .slideshow { font-size: 1.5rem; padding: 18px; }
+    .gif-row img { width: 35%; max-width: 180px; }
+  }
+  @media (max-width: 768px) {
+    .slideshow { font-size: 1.3rem; padding: 15px; }
+    .gif-row img { width: 40%; max-width: 150px; }
+  }
+  @media (max-width: 480px) {
+    .slideshow { font-size: 1rem; padding: 12px; }
+    .gif-row img { width: 50%; max-width: 120px; }
+  }
+</style>
+</head>
+<body>
+  <div class="slideshow">
+    <div class="quote">“Your eyes shine brighter than the stars, holding a universe of love within them.”</div>
+    <div class="quote">“The blush on your cheeks is more lovely than the morning rose.”</div>
+    <div class="quote">“Every time I see you, your beauty steals my breath away.”</div>
+    <div class="quote">“When you look at me with those beautiful eyes, the whole world disappears.”</div>
+
+    <div class="gif-row">
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGc5anpsdzRpc3ExY3VwbDNteHZkMnI2c3BrdHVmOWs1cXA2cmljeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rQLchri2sxRM8b28PL/giphy.gif" alt="GIF 1">
+      <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDlvNmx3ZWJuYm8yN2owa3o0d2hob2Q0cjN2azY0aG91NmxiMDZqdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BbKB4WYFgyNzd0dNbz/giphy.gif" alt="GIF 2">
+      <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGZkcXlleWhxank1a3FncWdxMGtmajEzejk2eWFnOGoyYmoxNTVmeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2xTT7qVcQLfZUX1xZg/giphy.gif" alt="GIF 3">
+    </div>
+  </div>
+
+  <button class="back-btn" onclick="window.location.href='sixth.html'">⬅ Back to Playlist</button>
+
+  <script>
+    // Slideshow logic
+    let quotes = document.getElementsByClassName("quote");
+    let index = 0;
+
+    function showQuotes() {
+      for (let i = 0; i < quotes.length; i++) { quotes[i].style.display = "none"; }
+      index++;
+      if (index > quotes.length) { index = 1; }
+      quotes[index-1].style.display = "block";
+      setTimeout(showQuotes, 4000); 
+    }
+    showQuotes();
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => { heart.remove(); }, 8000);
+    }
+    setInterval(createHeart, 500);
+
+    // GIF fade-in sequence
+    const gifs = document.querySelectorAll('.gif-row img');
+    let gifIndex = 0;
+
+    function showGifsSequentially() {
+      gifs.forEach(img => img.classList.remove('show'));
+      gifs[gifIndex].classList.add('show');
+      gifIndex++;
+      if (gifIndex >= gifs.length) gifIndex = 0;
+      setTimeout(showGifsSequentially, 4000);
+    }
+    showGifsSequentially();
+  </script>
+</body>
+</html>
